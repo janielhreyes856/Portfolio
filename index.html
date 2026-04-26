@@ -236,13 +236,56 @@
       background: radial-gradient(circle, rgba(26,107,255,.1) 0%, transparent 65%);
       pointer-events: none;
     }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 5rem;
-      align-items: center;
-      max-width: 1200px;
-    }
+   /* ABOUT RIGHT STACK */
+.about-grid {
+  display: grid;
+  grid-template-columns: 420px 1.2fr 340px;
+  gap: 4rem;
+
+  width: 100%;
+  max-width: 1500px;
+  margin-left: 230px;
+}
+
+.about-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.about-frame {
+  width: 100%;
+  max-width: 350px;
+
+  height: 200px;   /* 🔥 controls how short they are */
+  
+  border: 1px solid rgba(26,107,255,.35);
+  border-radius: 6px;
+
+  background: rgba(255,255,255,0.03);
+  position: relative;
+}
+/* CONTACT EXPANSION */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.embed-box {
+  min-height: 550px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  background: rgba(255,255,255,0.03);
+}
+
+.embed-content {
+  flex: 1;
+  margin-top: 1rem;
+}
     .about-avatar {
       position: relative;
       aspect-ratio: 1;
@@ -290,11 +333,18 @@
       pointer-events: none;
     }
     .about-text p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--white-dim);
-      margin-bottom: 1.4rem;
-    }
+  font-size: 1.15rem;   /* slightly bigger */
+  line-height: 1.9;     /* more readable */
+  color: var(--white-dim);
+  margin-bottom: 1.6rem;
+}
+    
+    .about-text {
+  max-width: 950px; /* was smaller before */
+  width: 100%;
+      margin-left: auto;
+}
+    
     .about-text p strong { color: var(--white); font-weight: 500; }
     .skills-row {
       display: flex; flex-wrap: wrap; gap: .6rem;
@@ -348,32 +398,56 @@
     }
 
     /* ── GALLERY ── */
-    #gallery { background: var(--black); }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 1.5rem;
-      max-width: 1200px;
-    }
+   #gallery {
+  background: var(--black);
+  width: 100%;
+
+  /* 🔥 less side padding so it reaches edges */
+  padding: 120px 20px;
+}
+  .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-auto-rows: 360px; /* controls height of each box */
+  gap: 2.0rem;
+
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto; /* keeps it balanced left + right */
+}
+    
     .gallery-item {
       position: relative;
       overflow: hidden;
       border-radius: 4px;
       cursor: none;
       background: var(--black-3);
+      min-height: 300px;
     }
-    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-    .gallery-item:nth-child(4) { grid-column: span 2; }
+    
     .gallery-thumb {
-      width: 100%;
-      aspect-ratio: 16/10;
-      display: block;
-      background: var(--black-3);
-      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
-    }
-    .gallery-item:nth-child(1) .gallery-thumb { aspect-ratio: 21/10; }
-    .gallery-item:nth-child(4) .gallery-thumb { aspect-ratio: 21/10; }
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+    
+  .gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  position: absolute;
+  inset: 0;
+
+  transition: transform 0.5s ease;
+}
+    
+    #gallery .section-label,
+#gallery .section-title {
+  margin-left: 80px; /* keeps original alignment feel */
+}
 
     /* Placeholder artwork for each card */
     .thumb-art {
@@ -452,14 +526,32 @@
     .gallery-item:hover .gallery-border { border-color: rgba(26,107,255,.5); }
 
     /* ── PROCESS ── */
-    #process { background: var(--black-2); }
+    #process { 
+      background: var(--black-2); 
+      text-align: center;
+    }
+    
+    #process .section-label,
+#process .section-title {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+    
+    #process .section-title {
+  margin-bottom: 3rem;
+}
+
+#process .section-label {
+  margin-bottom: 0.8rem;
+}
     .process-list {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background: rgba(26,107,255,.12);
       border: 1px solid rgba(26,107,255,.12);
-      max-width: 1200px;
+      max-width: 1950px;
     }
     .process-item {
       background: var(--black-2);
@@ -470,7 +562,7 @@
     .process-item:hover { background: rgba(26,107,255,.07); }
     .process-num {
       font-family: var(--font-display);
-      font-size: 3.5rem;
+      font-size: 5.5rem;
       color: rgba(26,107,255,.2);
       letter-spacing: .04em;
       margin-bottom: 1.2rem;
@@ -485,16 +577,36 @@
       margin-bottom: .7rem;
     }
     .process-desc {
-      font-size: .88rem;
+      font-size: 1.1rem;
       line-height: 1.65;
       color: var(--white-dim);
     }
+    
+    
 
     /* ── CONTACT ── */
     #contact {
       background: var(--black);
       position: relative;
       overflow: hidden;
+        padding-left: 80px;   /* pushes content right */
+  padding-right: 40px;
+}
+    
+   #contact .contact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+    
+   #contact .contact-form,
+.embed-box {
+  width: 100%;
+} 
+    
+    
     }
     #contact::before {
       content: '';
@@ -503,10 +615,11 @@
       background: radial-gradient(ellipse at 50% 100%, rgba(26,107,255,.14) 0%, transparent 65%);
       pointer-events: none;
     }
-    .contact-inner {
-      max-width: 700px;
-      position: relative; z-index: 2;
-    }
+   #contact .contact-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-right: 40px; /* creates right breathing room */
+}
     .contact-subtitle {
       font-size: 1rem;
       color: var(--white-dim);
@@ -515,6 +628,7 @@
     }
     .contact-form {
       display: flex; flex-direction: column; gap: 1.2rem;
+      min-height: 100%;
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .form-group { display: flex; flex-direction: column; gap: .5rem; }
@@ -571,9 +685,15 @@
     .btn-submit:active { transform: scale(.97); }
 
     .contact-socials {
-      display: flex; gap: 1.6rem; margin-top: 3rem;
-      flex-wrap: wrap;
-    }
+  display: flex;
+  justify-content: center;   /* 🔥 centers under contact */
+  gap: 2rem;
+ margin-left: -270px;
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+
+  flex-wrap: wrap;
+}
     .social-link {
       font-family: var(--font-mono);
       font-size: .7rem;
@@ -592,6 +712,43 @@
       transition: box-shadow .3s;
     }
     .social-link:hover .social-dot { box-shadow: 0 0 8px var(--blue); }
+    
+    /* - Embed content -- */
+  .embed-box {
+  width: 100%;
+  min-height: 650px;   /* 🔥 taller container */
+  padding: 2rem;
+
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.embed-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+  color: var(--white);
+}
+
+.embed-caption {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.embed-content {
+  margin-top: 1rem;
+  min-height: 260px;
+}
+    @media (max-width: 900px) {
+  #contact .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+    
+    
 
     /* ── FOOTER ── */
     footer {
@@ -703,39 +860,48 @@
 
   <!-- About -->
   <section id="about">
-    <div class="about-grid">
-      <div>
-        <div class="avatar-placeholder">
-          <div class="thumb-art-shape" style="width:200px;height:200px;top:-20px;left:-30px;"></div>
-          <div class="thumb-art-shape" style="width:120px;height:120px;bottom:20px;right:-20px;background:rgba(18,80,204,.15);"></div>
-          <span class="avatar-initials">AR</span>
-        </div>
+  <div class="about-grid">
+
+    <div>
+      <div class="about-avatar">
+        <img src="https://www.longwood.edu/media/magazine/spring-2019/Anthony.PNG" alt="Your Name" class="about-avatar-img">
         <div class="avatar-frame"></div>
-        <div class="stats-row reveal">
-          <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Exp.</span></div>
-          <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Projects</span></div>
-          <div class="stat"><span class="stat-num">7</span><span class="stat-label">Clients</span></div>
-        </div>
       </div>
-      <div class="about-text reveal reveal-delay-2">
-        <p class="section-label">About me</p>
-        <h2 class="section-title">Turning ideas<br/>into pixels</h2>
-        <p>I'm <strong>Alex Rowe</strong>, a creative developer and UI/UX designer based in New York. I specialize in building products that feel as good as they function — where every interaction has intention behind it.</p>
-        <p>With a background spanning <strong>web development, brand identity,</strong> and <strong>interactive media</strong>, I bridge the gap between design and engineering to deliver work that stands out in a crowded digital landscape.</p>
-        <p>When I'm not pushing pixels, you'll find me exploring generative art, contributing to open source, or chasing the perfect espresso.</p>
-        <div class="skills-row">
-          <span class="skill-tag">React / Next.js</span>
-          <span class="skill-tag">Three.js</span>
-          <span class="skill-tag">UI / UX Design</span>
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">Motion Design</span>
-          <span class="skill-tag">GSAP</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Brand Identity</span>
-        </div>
+
+      <div class="stats-row reveal">
+        <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Exp.</span></div>
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Projects</span></div>
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label">Clients</span></div>
       </div>
     </div>
-  </section>
+
+    <div class="about-text reveal reveal-delay-2">
+      <p class="section-label">About me</p>
+      <h2 class="section-title">Turning ideas<br/>into pixels</h2>
+
+      <p>I'm <strong>Alex Rowe</strong>, a creative developer and UI/UX designer based in New York. I specialize in building products that feel as good as they function — where every interaction has intention behind it.</p>
+      <p>With a background spanning web development, brand identity, and interactive media, I bridge the gap between design and engineering to deliver work that stands out in a crowded digital landscape.</p>
+      
+      <p>When I'm not pushing pixels, you'll find me exploring generative art, contributing to open source, or chasing the perfect espresso.</p>
+
+      <div class="skills-row">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Three.js</span>
+        <span class="skill-tag">UI / UX</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">GSAP</span>
+      </div>
+    </div>
+
+    <!-- 🔥 NEW: RIGHT SIDE IMAGE STACK -->
+    <div class="about-gallery">
+      <div class="about-frame"></div>
+      <div class="about-frame"></div>
+      <div class="about-frame"></div>
+    </div>
+
+  </div>
+</section>
 
   <!-- Gallery -->
   <section id="gallery">
@@ -747,7 +913,7 @@
     <!-- PROJECT 1 -->
     <a href="https://refugiados-en-tus-brazos-inc.vercel.app/" target="_blank" class="gallery-item reveal">
       <div class="gallery-thumb">
-        <img src="https://via.placeholder.com/600x400" alt="Project 1">
+        <img src="https://i.imgur.com/DO2n9Ju.png" alt="Project 1">
       </div>
       <div class="gallery-overlay">
         <span class="overlay-tag">Restaurant Website · 2025</span>
@@ -757,37 +923,63 @@
     </a>
 
     <!-- PROJECT 2 -->
-    <a href="https://your-client-site-2.com" target="_blank" class="gallery-item reveal reveal-delay-1">
+     <a href="https://refugiados-en-tus-brazos-inc.vercel.app/" target="_blank" class="gallery-item reveal">
       <div class="gallery-thumb">
-        <img src="https://via.placeholder.com/600x400" alt="Project 2">
+        <img src="https://i.imgur.com/DO2n9Ju.png" alt="Project 1">
       </div>
       <div class="gallery-overlay">
-        <span class="overlay-tag">Church Website · 2025</span>
-        <span class="overlay-title">His Grace Ministries</span>
+        <span class="overlay-tag">Restaurant Website · 2025</span>
+        <span class="overlay-title">Coqui Eats</span>
         <div class="overlay-arrow">→</div>
       </div>
     </a>
+
 
     <!-- PROJECT 3 -->
-    <a href="https://your-client-site-3.com" target="_blank" class="gallery-item reveal reveal-delay-2">
+    <a href="https://refugiados-en-tus-brazos-inc.vercel.app/" target="_blank" class="gallery-item reveal">
       <div class="gallery-thumb">
-        <img src="https://via.placeholder.com/600x400" alt="Project 3">
+        <img src="https://i.imgur.com/DO2n9Ju.png" alt="Project 1">
       </div>
       <div class="gallery-overlay">
-        <span class="overlay-tag">Portfolio · 2024</span>
-        <span class="overlay-title">Creative Brand</span>
+        <span class="overlay-tag">Restaurant Website · 2025</span>
+        <span class="overlay-title">Coqui Eats</span>
         <div class="overlay-arrow">→</div>
       </div>
     </a>
 
+
     <!-- PROJECT 4 -->
-    <a href="https://your-client-site-4.com" target="_blank" class="gallery-item reveal">
+     <a href="https://refugiados-en-tus-brazos-inc.vercel.app/" target="_blank" class="gallery-item reveal">
       <div class="gallery-thumb">
-        <img src="https://via.placeholder.com/600x400" alt="Project 4">
+        <img src="https://i.imgur.com/DO2n9Ju.png" alt="Project 1">
       </div>
       <div class="gallery-overlay">
-        <span class="overlay-tag">E-Commerce · 2024</span>
-        <span class="overlay-title">Online Store</span>
+        <span class="overlay-tag">Restaurant Website · 2025</span>
+        <span class="overlay-title">Coqui Eats</span>
+        <div class="overlay-arrow">→</div>
+      </div>
+    </a>
+    
+     <!-- PROJECT 5 -->
+    <a href="https://refugiados-en-tus-brazos-inc.vercel.app/" target="_blank" class="gallery-item reveal">
+      <div class="gallery-thumb">
+        <img src="https://i.imgur.com/DO2n9Ju.png" alt="Project 1">
+      </div>
+      <div class="gallery-overlay">
+        <span class="overlay-tag">Restaurant Website · 2025</span>
+        <span class="overlay-title">Coqui Eats</span>
+        <div class="overlay-arrow">→</div>
+      </div>
+    </a>
+    
+     <!-- PROJECT 6 -->
+    <a href="https://refugiados-en-tus-brazos-inc.vercel.app/" target="_blank" class="gallery-item reveal">
+      <div class="gallery-thumb">
+        <img src="https://i.imgur.com/DO2n9Ju.png" alt="Project 1">
+      </div>
+      <div class="gallery-overlay">
+        <span class="overlay-tag">Restaurant Website · 2025</span>
+        <span class="overlay-title">Coqui Eats</span>
         <div class="overlay-arrow">→</div>
       </div>
     </a>
@@ -797,7 +989,7 @@
   <!-- Process -->
   <section id="process">
     <p class="section-label reveal">How I work</p>
-    <h2 class="section-title reveal reveal-delay-1">My<br />Process</h2>
+    <h2 class="section-title reveal reveal-delay-1">My Process</h2>
     <div class="process-list">
       <div class="process-item reveal">
         <div class="process-num">01</div>
@@ -823,40 +1015,80 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact">
-    <div class="contact-inner">
-      <p class="section-label reveal">Get in touch</p>
-      <h2 class="section-title reveal reveal-delay-1">Let's Build<br/>Something</h2>
-      <p class="contact-subtitle reveal reveal-delay-2">Have a project in mind or just want to say hello? Fill out the form and I'll get back to you within 24 hours.</p>
-      <form class="contact-form reveal reveal-delay-3" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Your name</label>
-            <input type="text" class="form-input" placeholder="John Doe" />
+<section id="contact">
+  <div class="contact-inner">
+
+    <p class="section-label reveal">Get in touch</p>
+    <h2 class="section-title reveal reveal-delay-1">Let's Build<br/>Something</h2>
+
+    <p class="contact-subtitle reveal reveal-delay-2">
+      Have a project in mind? Send a message and I’ll respond within 24 hours.
+    </p>
+
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div>
+        <form class="contact-form reveal reveal-delay-3" onsubmit="handleSubmit(event)">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your name</label>
+              <input type="text" class="form-input" placeholder="John Doe" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email address</label>
+              <input type="email" class="form-input" placeholder="john@example.com" />
+            </div>
           </div>
+
           <div class="form-group">
-            <label class="form-label">Email address</label>
-            <input type="email" class="form-input" placeholder="john@example.com" />
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" />
           </div>
+
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Send message →</button>
+        </form>
+
+        <!-- SOCIALS NOW UNDER FORM (FIXED) -->
+        <div class="contact-socials reveal">
+          <a href="#" class="social-link"><span class="social-dot"></span>GitHub</a>
+          <a href="#" class="social-link"><span class="social-dot"></span>LinkedIn</a>
+          <a href="#" class="social-link"><span class="social-dot"></span>Twitter</a>
+          <a href="#" class="social-link"><span class="social-dot"></span>Dribbble</a>
         </div>
-        <div class="form-group">
-          <label class="form-label">Subject</label>
-          <input type="text" class="form-input" placeholder="Project inquiry, collaboration, etc." />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me about your project or idea…"></textarea>
-        </div>
-        <button type="submit" class="btn-submit" id="submitBtn">Send message →</button>
-      </form>
-      <div class="contact-socials reveal">
-        <a href="#" class="social-link"><span class="social-dot"></span>GitHub</a>
-        <a href="#" class="social-link"><span class="social-dot"></span>LinkedIn</a>
-        <a href="#" class="social-link"><span class="social-dot"></span>Twitter / X</a>
-        <a href="#" class="social-link"><span class="social-dot"></span>Dribbble</a>
       </div>
+
+      <!-- EMBED BOX -->
+      <div class="embed-box reveal reveal-delay-3">
+
+        <div class="embed-header">
+          <h3 class="embed-title">Quick Info</h3>
+          <p class="embed-caption">Embed anything here — video, map, calendar</p>
+        </div>
+
+        <div class="embed-content">
+          <iframe 
+            src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&ctz=America%2FNew_York"
+            style="border:0"
+            width="100%"
+            height="520"
+            frameborder="0"
+            scrolling="no">
+          </iframe>
+        </div>
+
+      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
   <!-- Footer -->
   <footer>
