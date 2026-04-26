@@ -694,7 +694,7 @@
   justify-content: center;   /* 🔥 centers under contact */
   gap: 2rem;
  margin-left: -270px;
-  margin-top: 4rem;
+  margin-top: 2rem;
   padding-bottom: 2rem;
 
   flex-wrap: wrap;
@@ -720,8 +720,10 @@
     
     /* - Embed content -- */
   .embed-box {
+  align-self: start;
   width: 100%;
-  min-height: 650px;   /* 🔥 taller container */
+  min-height: 650px;
+
   padding: 2rem;
 
   background: rgba(255,255,255,0.03);
@@ -730,6 +732,8 @@
 
   display: flex;
   flex-direction: column;
+
+  margin-top: -220px; /* 🔥 this is the correct way */
 }
 
 .embed-title {
