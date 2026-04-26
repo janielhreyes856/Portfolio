@@ -547,13 +547,17 @@
   margin-bottom: 0.8rem;
 }
     .process-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(26,107,255,.12);
-      border: 1px solid rgba(26,107,255,.12);
-      max-width: 1950px;
-    }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+
+  background: rgba(26,107,255,.12);
+  border: 1px solid rgba(26,107,255,.12);
+
+  max-width: 1900px;   /* controls width */
+  margin: 0 auto;      /* centers it */
+  width: 100%;
+}
     .process-item {
       background: var(--black-2);
       padding: 2.5rem 2rem;
